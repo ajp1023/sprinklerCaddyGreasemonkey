@@ -24,6 +24,29 @@ function promptForNewName(el)
   }
 }
 
+//this function checks to see if the "Program Scheudle" div is present, and if it is
+//replaces "Program n" text in the header with "Program : {customName}"
+
+function changeProgramHeaderText()
+{
+  var programNumberHeading = document.getElementById('progNumber');
+  if (programNumberHeading != null)
+  {
+    programNumber = programNumberHeading.innerHTML;
+    if (false == isNaN(parseInt(programNumber)))
+    {
+      programLinkId = programLinkIds[parseInt(programNumber) - 1];
+      var newProgramName = GM_getValue(programLinkId, programNumber);
+      programNumberHeading.innerHTML = ': ' + newProgramName;
+    }
+  }
+
+   setTimeout(changeProgramHeaderText, 2000);
+}
+
+//this function adds the small [#] links next to the left sidebar's program name links.
+//this allows you to click on the small link to rename the Sprinkler Caddy's default names
+// of "Program N" with your own name.
 function addRenameLinksToSprinklerCaddyWebpage()
 {
   var numProgramsToRename = programLinkIds.length;
@@ -39,7 +62,6 @@ function addRenameLinksToSprinklerCaddyWebpage()
   {
     for (var i = 0; i < numProgramsToRename; i++)
     {
-
       programLinkElement = programLinkElements[i];
       if (programLinkElement != null)
       {
@@ -60,6 +82,7 @@ function addRenameLinksToSprinklerCaddyWebpage()
         programLinkElement.innerHTML = newProgramName;
       }
     }
+    changeProgramHeaderText();
   }
 }
 addRenameLinksToSprinklerCaddyWebpage();
