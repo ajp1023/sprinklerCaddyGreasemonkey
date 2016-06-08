@@ -33,7 +33,7 @@ function addRenameLinksToSprinklerCaddyWebpage()
   }
   if (programLinkElements[numProgramsToRename - 1] == null)
   {
-    setTimeout(addRenameLinksToSprinklerCaddyWebpage, 1000);
+    setTimeout(addRenameLinksToSprinklerCaddyWebpage, 3000);
   } 
   else
   {
@@ -47,7 +47,6 @@ function addRenameLinksToSprinklerCaddyWebpage()
         editButton.innerHTML = '[*]';
         editButton.href = 'javascript:void(0)';
         editButton.style.fontSize = 'xx-small';
-        editButton.style.cssFloat = 'right';
         programLinkElement.parentElement.appendChild(editButton);
         programLinkElement.style.display = 'inline';
         editButton.style.display = 'inline';
